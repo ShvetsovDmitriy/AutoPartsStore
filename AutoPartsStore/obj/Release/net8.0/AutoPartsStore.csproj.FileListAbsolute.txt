@@ -145,3 +145,4 @@ C:\vs_projects\AutoPartsStore\AutoPartsStore\obj\Release\net8.0\refint\AutoParts
 C:\vs_projects\AutoPartsStore\AutoPartsStore\obj\Release\net8.0\AutoPartsStore.pdb
 C:\vs_projects\AutoPartsStore\AutoPartsStore\obj\Release\net8.0\AutoPartsStore.genruntimeconfig.cache
 C:\vs_projects\AutoPartsStore\AutoPartsStore\obj\Release\net8.0\ref\AutoPartsStore.dll
+C:\vs_projects\AutoPartsStore\AutoPartsStore\obj\Release\net8.0\AutoPartsStore.sourcelink.json
