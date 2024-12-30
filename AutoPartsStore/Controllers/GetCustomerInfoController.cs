@@ -1,8 +1,5 @@
-﻿
-using AutoPartsStore.Services;
+﻿using AutoPartsStore.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace AutoPartsStore.Controllers
 {
@@ -23,7 +20,7 @@ namespace AutoPartsStore.Controllers
             return _customerInfoService.GetCustomerByIdAsync(customerId);
         }
 
-        [HttpGet("phone/{phoneNumber}")]
+        [HttpGet("phone")]
         public Task<IActionResult> GetCustomerByPhoneNumber(string phoneNumber)
         {
             return _customerInfoService.GetCustomerByPhoneNumberAsync(phoneNumber);

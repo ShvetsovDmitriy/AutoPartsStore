@@ -2,10 +2,6 @@
 using AutoPartsStore.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutoPartsStore.Services
 {
@@ -64,7 +60,7 @@ namespace AutoPartsStore.Services
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
                 };
                 _cache.Set(cacheKey, products, cacheOptions);
-            }
+            }          
 
             return products;
         }

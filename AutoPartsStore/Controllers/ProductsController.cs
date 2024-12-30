@@ -1,12 +1,10 @@
-﻿// ProductsController.cs
-using AutoPartsStore.Services;
+﻿using AutoPartsStore.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace AutoPartsStore.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/products")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
