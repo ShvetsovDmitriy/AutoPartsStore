@@ -34,14 +34,14 @@ public partial class MyDbContext : DbContext
         .HasKey(o => o.ProductTypeId);
 
         modelBuilder.Entity<OrderItems>()
-      .HasOne(o => o.Orders)
-      .WithMany(o => o.OrderItems)
-      .HasForeignKey(o => o.OrderId);
+         .HasOne(o => o.Orders)
+         .WithMany(o => o.OrderItems)
+         .HasForeignKey(o => o.OrderId);
 
         modelBuilder.Entity<OrderItems>()
-          .HasOne(o => o.Products)
-          .WithMany(o => o.OrderItems)
-          .HasForeignKey(o => o.ProductId);
+         .HasOne(o => o.Products)
+         .WithMany(o => o.OrderItems)
+         .HasForeignKey(o => o.ProductId);
 
         modelBuilder.Entity<Orders>()
         .HasOne(o => o.Customer) 

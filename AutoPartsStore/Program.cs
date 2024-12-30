@@ -1,9 +1,6 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore;
+using AutoPartsStore.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,13 +16,14 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString"));
 });
-
+builder.Services.AddScoped<ICustomerInfoService, CustomerInfoService>();
 builder.Services.AddControllers();
 
 // Добавление Swagger для документирования API
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
+
 });
 
 // Добавление кэширования данных
@@ -36,7 +34,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.RoutePrefix = string.Empty; // Убрать префикс маршрута
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+
+    });
 }
 
 app.UseHttpsRedirection();

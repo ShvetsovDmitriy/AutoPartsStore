@@ -1,0 +1,29 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 5000
+
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["AutoPartsStore/AutoPartsStore.csproj", "AutoPartsStore/"]
+RUN dotnet restore "./AutoPartsStore/AutoPartsStore.csproj"
+COPY . .
+WORKDIR "/src/AutoPartsStore"
+RUN dotnet build "./AutoPartsStore.csproj" -c %BUILD_CONFIGURATION% -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./AutoPartsStore.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+# Настройка переменных среды для использования HTTPS
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=https://+:5000
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password=333222
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=C:\https\aspnetapp.pfx
+COPY ./AutoPartsStore /https
+ENTRYPOINT ["dotnet", "AutoPartsStore.dll"]

@@ -1,8 +1,5 @@
-﻿
-using AutoPartsStore.Services;
+﻿using AutoPartsStore.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace AutoPartsStore.Controllers
 {
