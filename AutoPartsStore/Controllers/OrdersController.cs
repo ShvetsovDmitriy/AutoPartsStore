@@ -2,7 +2,6 @@
 using AutoPartsStore.Services;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace AutoPartsStore.Controllers
 {
     [ApiController]

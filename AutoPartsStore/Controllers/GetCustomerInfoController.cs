@@ -20,7 +20,7 @@ namespace AutoPartsStore.Controllers
             return _customerInfoService.GetCustomerByIdAsync(customerId);
         }
 
-        [HttpGet("phone/{phoneNumber}")]
+        [HttpGet("phone")]
         public Task<IActionResult> GetCustomerByPhoneNumber(string phoneNumber)
         {
             return _customerInfoService.GetCustomerByPhoneNumberAsync(phoneNumber);
