@@ -1,14 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoPartsStore.Model;
-using AutoPartsStore.Services;
+using AutoPartsStore.Services.Order;
 
-namespace AutoPartsStore.Controllers
+namespace AutoPartsStore.Controllers.Order
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace AutoPartsStore.Services
+namespace AutoPartsStore.Services.Customer
 {
     public interface ICustomerInfoService
     {

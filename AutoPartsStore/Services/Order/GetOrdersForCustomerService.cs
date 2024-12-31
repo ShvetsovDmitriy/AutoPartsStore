@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoPartsStore.Model;
+using AutoPartsStore.Model.Order;
 
-namespace AutoPartsStore.Services
+namespace AutoPartsStore.Services.Order
 {
     public class CustomerOrderService
     {

@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoPartsStore.Model;
 
-namespace AutoPartsStore.Services
+namespace AutoPartsStore.Services.Customer
 {
     public interface ICustomerAddService
     {
         Task<IActionResult> AddCustomerAsync(Customer customer);
     }
-    public class CustomerAddService : ControllerBase,ICustomerAddService
+    public class CustomerAddService : ControllerBase, ICustomerAddService
     {
         private readonly MyDbContext _context;
         private readonly ILogger<CustomerAddService> _logger;
