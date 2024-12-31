@@ -1,9 +1,9 @@
-﻿
-using AutoPartsStore.Model;
+﻿using AutoPartsStore.Model.Product;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace AutoPartsStore.Services
+namespace AutoPartsStore.Services.Product
 {
     public interface IProductService
     {
@@ -14,11 +14,13 @@ namespace AutoPartsStore.Services
     {
         private readonly MyDbContext _context;
         private readonly IMemoryCache _cache;
+        private readonly ILogger<ProductService> _logger;
 
-        public ProductService(MyDbContext context, IMemoryCache cache)
+        public ProductService(MyDbContext context, IMemoryCache cache, ILogger<ProductService> logger)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<List<Products>> GetProductsAsync(string productName, int? productTypeId, bool? inStockOnly, string sortBy)
@@ -49,7 +51,7 @@ namespace AutoPartsStore.Services
                     {
                         "price_asc" => productsQuery.OrderBy(p => p.Price),
                         "price_desc" => productsQuery.OrderByDescending(p => p.Price),
-                        _ => productsQuery, // No sorting
+                        _ => productsQuery,
                     };
                 }
 
@@ -60,9 +62,16 @@ namespace AutoPartsStore.Services
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
                 };
                 _cache.Set(cacheKey, products, cacheOptions);
-            }          
+            }
+            if (products == null || !products.Any())
+            {
+                return null;
 
-            return products;
+            }
+            else
+            {
+                return products;
+            }
         }
     }
 }

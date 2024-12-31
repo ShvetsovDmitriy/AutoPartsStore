@@ -1,9 +1,7 @@
-﻿using AutoPartsStore.Services;
+﻿using AutoPartsStore.Services.Customer;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
-namespace AutoPartsStore.Controllers
+namespace AutoPartsStore.Controllers.Customer
 {
     [ApiController]
     [Route("api/[controller]")]

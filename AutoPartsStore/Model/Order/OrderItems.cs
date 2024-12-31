@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
+using AutoPartsStore.Model.Product;
 
-namespace AutoPartsStore.Model
+namespace AutoPartsStore.Model.Order
 {
     public class OrderItems
     {

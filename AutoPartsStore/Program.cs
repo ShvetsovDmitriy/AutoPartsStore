@@ -1,4 +1,5 @@
-using AutoPartsStore.Services;
+using AutoPartsStore.Services.Auth;
+using AutoPartsStore.Services.Customer;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -17,6 +18,12 @@ builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString"));
 });
 builder.Services.AddScoped<ICustomerInfoService, CustomerInfoService>();
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<AccountRepository>();
+builder.Services.AddScoped<JwtService>();
+builder.Services.Configure<AuthSettings>(builder.Configuration.GetSection(nameof(AuthSettings)));
+
+
 builder.Services.AddControllers();
 
 // Добавление Swagger для документирования API

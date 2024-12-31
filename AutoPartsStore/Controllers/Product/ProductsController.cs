@@ -1,10 +1,10 @@
-﻿using AutoPartsStore.Services;
+﻿using AutoPartsStore.Services.Product;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AutoPartsStore.Controllers
+namespace AutoPartsStore.Controllers.Product
 {
     [ApiController]
-    [Route("api/products")]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -15,7 +15,7 @@ namespace AutoPartsStore.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProducts([FromQuery] string productName, [FromQuery] int? productTypeId, 
+        public async Task<IActionResult> GetProducts([FromQuery] string productName, [FromQuery] int? productTypeId,
                                                      [FromQuery] bool? inStockOnly, [FromQuery] string sortBy)
         {
             try

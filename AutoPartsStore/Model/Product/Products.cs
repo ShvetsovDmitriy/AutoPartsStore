@@ -1,5 +1,6 @@
-﻿
-namespace AutoPartsStore.Model
+﻿using AutoPartsStore.Model.Order;
+
+namespace AutoPartsStore.Model.Product
 {
     public class Products
     {
@@ -9,8 +10,6 @@ namespace AutoPartsStore.Model
         public decimal Price { get; set; }
         public int AvailableQuantity { get; set; }
         public List<OrderItems>? OrderItems { get; set; }
-
-        public ProductTypes? ProductType { get; set; } 
-
+        public ProductTypes? ProductType { get; set; }
     }
 }

@@ -1,12 +1,7 @@
-﻿// OrderService.cs
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoPartsStore.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using AutoPartsStore.Model.Order;
+using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace AutoPartsStore.Services
+namespace AutoPartsStore.Services.Order
 {
     public interface IOrderService
     {
@@ -27,7 +22,11 @@ namespace AutoPartsStore.Services
         {
             try
             {
-                // Проверка наличия товара на складе и уменьшение количества
+
+                if (orders.OrderItems == null || !orders.OrderItems.Any())
+                {
+                    return $"Товар не найден.";
+                }
                 foreach (var orderItem in orders.OrderItems)
                 {
                     var product = await _context.Products.FindAsync(orderItem.ProductId);

@@ -1,8 +1,8 @@
-﻿using AutoPartsStore.Model;
-using AutoPartsStore.Services;
+﻿using AutoPartsStore.Model.Order;
+using AutoPartsStore.Services.Order;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AutoPartsStore.Controllers
+namespace AutoPartsStore.Controllers.Order
 {
     [ApiController]
     [Route("api/[controller]")]

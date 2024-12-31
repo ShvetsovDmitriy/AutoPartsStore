@@ -1,6 +1,6 @@
-﻿using AutoPartsStore.Model;
+﻿using AutoPartsStore.Model.Order;
+using AutoPartsStore.Model.Product;
 using Microsoft.EntityFrameworkCore;
-
 public partial class MyDbContext : DbContext
 {
     public MyDbContext(DbContextOptions<MyDbContext> dbContextOptions)
@@ -22,16 +22,16 @@ public partial class MyDbContext : DbContext
          .HasKey(o => o.CustomerId);
 
         modelBuilder.Entity<Orders>()
-        .HasKey(o => o.OrderId);
+         .HasKey(o => o.OrderId);
 
         modelBuilder.Entity<OrderItems>()
-        .HasKey(o => o.OrderItemId);
+         .HasKey(o => o.OrderItemId);
 
         modelBuilder.Entity<Products>()
-       .HasKey(o => o.ProductId);
+         .HasKey(o => o.ProductId);
 
         modelBuilder.Entity<ProductTypes>()
-        .HasKey(o => o.ProductTypeId);
+         .HasKey(o => o.ProductTypeId);
 
         modelBuilder.Entity<OrderItems>()
          .HasOne(o => o.Orders)
@@ -44,12 +44,8 @@ public partial class MyDbContext : DbContext
          .HasForeignKey(o => o.ProductId);
 
         modelBuilder.Entity<Orders>()
-        .HasOne(o => o.Customer) 
-        .WithMany(c => c.Orders) 
-        .HasForeignKey(o => o.CustomerId);
-
-
-
-
+         .HasOne(o => o.Customer) 
+         .WithMany(c => c.Orders) 
+         .HasForeignKey(o => o.CustomerId);
     }
 }
